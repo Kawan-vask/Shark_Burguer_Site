@@ -4,7 +4,9 @@
     "\\public",
     "\\src",
     "\\src\\components",
+    "\\src\\components\\Template_componente",
     "\\src\\views"
   ],
+  "SelectedNode": "\\index.html",
   "PreviewInSolutionExplorer": false
 }
