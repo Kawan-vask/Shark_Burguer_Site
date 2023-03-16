@@ -29,10 +29,8 @@
                     <select name="pao" id="pao" v-model="pao">
 
                         <option value="">Selecione o tipo de pão:</option>
-                        <option value="">Integral</option>
-                        <option value="Italiano Branco">Italiano Branco</option>
-                        <option value="3 Queijos">3 Queijos</option>
-                        <option value="Parmesão e Orégano">Parmesão e Orégano</option>
+                        <option v-for="pao in paes" :key="pao.id" :value="pao.tipo">{{pao.tipo}}</option>
+
                     </select>
                 </div>
 
@@ -44,10 +42,7 @@
                     <select name="carne" id="carne" v-model="carne">
 
                         <option value="">Selecione o tipo de carne:</option>
-                        <option value="Maminha">Maminha</option>
-                        <option value="alcatra">Alcatra</option>
-                        <option value="pichanha">Picanha</option>
-                        <option value="Veggie burger">Veggie Burguer</option>
+                        <option v-for="carne in carnes" :key="carne.id" :value="carne.tipo">{{carne.tipo}}</option>
 
                     </select>
                 </div>
@@ -58,12 +53,14 @@
 
                     <label id="opcionais-title" for="opcionais">Selecione os opicionais: </label>
 
-                      <div v-for="opcao in opcionais" :key="`opcao-${opcao.id}`" class="checkbox-container">
-                            <input type="checkbox" :id="`opcao-${opcao.id}`" :value="opcao.id" />
-                            <label :for="`opcao-${opcao.id}`">
-                                <span class="checkbox"></span>
-                                <span>{{opcao.label}}</span>
-                            </label>
+                      <div v-for="opcional in opcionaisdata" :key="opcional.id" class="checkbox-container">
+                            <input type="checkbox" :id="`op-${opcional.id}`" name="opcionais" v-model="opcionais" :value="opcional.tipo" />
+
+                                <label :for="`op-${opcional.id}`">
+                                    <span class="checkbox"></span>
+                                    {{opcional.tipo}}
+                                </label>
+
                         </div>
                 </div>
 
@@ -104,14 +101,7 @@
                 nome: null,
                 pao: null,
                 carne: null,
-                opcionais: [
-                    { id: "1", label: "Bacon" },
-                    { id: "2", label: "Cheddar" },
-                    { id: "3", label: "Salame" },
-                    { id: "4", label: "Tomate" },
-                    { id: "5", label: "Cebola Roxa" },
-                    { id: "6", label: "Picles" },
-                ],
+                opcionais: [],
                 status: "Solicitado",
                 msg: null,
 
@@ -122,8 +112,21 @@
 
             async getIngredients(){
 
-                const req = await fetch("");
+                const req = await fetch("http://localhost:3000/ingredientes");
+                const data = await req.json();
+
+                this.paes = data.paes;
+                this.carnes = data.carnes;
+                this.opcionaisdata = data.opcionais
+
+
             }
+        },
+
+        mounted() {
+
+            this.getIngredients()
+
         }
 
     }
@@ -241,7 +244,8 @@
         font-weight: bold;
         padding: 15px;
         border-radius: 30px;
-        background-color: #efa335;
+        background-color: 
+            #efa335;
         color: black;
         border: 0;
         transition: all ease-in-out 0.2s;
