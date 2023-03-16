@@ -1,4 +1,4 @@
-{
+ï»¿{
   "ingredientes": {
     "paes": [
       {
@@ -11,7 +11,7 @@
       },
       {
         "id": 3,
-        "tipo": "Parmesão e Orégano"
+        "tipo": "ParmesÃ£o e OrÃ©gano"
       },
       {
         "id": 4,
@@ -54,52 +54,23 @@
         "tipo": "Tomate"
       },
       {
-        "id": 4,
+        "id": 5,
         "tipo": "Cebola roxa"
       },
+    
       {
-        "id": 4,
-        "tipo": "Pepino"
+        "id": 6,
+        "tipo": "Picles"
+      },  
+      {
+        "id": 7,
+        "tipo": "Maionese"
+      },
+      {
+        "id": 8,
+        "tipo": "Ketchup"
       }
     ]
   },
-  "status": [
-    {
-      "id": 1,
-      "tipo": "Solicitado"
-    },
-    {
-      "id": 2,
-      "tipo": "Em produção"
-    },
-    {
-      "id": 3,
-      "tipo": "Finalizado"
-    }
-  ],
-  "burgers": [
-    {
-      "nome": "Matheus Battisti",
-      "carne": "Picanha",
-      "pao": "Italiano Branco",
-      "opcionais": [
-        "Bacon",
-        "Salame",
-        "Cebola roxa"
-      ],
-      "status": "Finalizado",
-      "id": 1
-    },
-    {
-      "nome": "João Coelho",
-      "carne": "Maminha",
-      "pao": "3 Queijos",
-      "opcionais": [
-        "Salame",
-        "Cebola roxa"
-      ],
-      "status": "Solicitado",
-      "id": 4
-    }
-  ]
+  "status": []
 }

@@ -1,12 +1,11 @@
 {
   "ExpandedNodes": [
     "",
-    "\\public",
+    "\\db",
     "\\src",
     "\\src\\components",
-    "\\src\\components\\Template_componente",
     "\\src\\views"
   ],
-  "SelectedNode": "\\index.html",
+  "SelectedNode": "\\db\\db.json",
   "PreviewInSolutionExplorer": false
 }
