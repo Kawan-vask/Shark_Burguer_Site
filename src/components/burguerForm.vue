@@ -7,11 +7,13 @@
 
     <div>
 
-        <!-- <p>Componente de mensagem</p><br><br> -->
-
         <div>
+            <!--Mensagem de confirmação ----------------------------->
 
-            <form id="burguer-form">
+             <componenteMensagem :msg="msg" v-show="msg"/>
+
+             <!--Formulário de pedido ----------------------------->
+            <form id="burguer-form" @submit.prevent="createBurguer">
 
 
                 <!--Nome do cliente -------------------->
@@ -59,19 +61,17 @@
                                 <label :for="`op-${opcional.id}`">
                                     <span class="checkbox"></span>
                                     {{opcional.tipo}}
+                                    
                                 </label>
 
                         </div>
                 </div>
 
-
-
                 <!--Submite ----------------------------->
 
                 <div class="input-container">
 
-                    <input type="submit" class="submit-btn" value="ENVIAR PEDIDO">
-
+                    <input type="submit" class="submit-btn" value="ENVIAR PEDIDO" :disabled="salvando">
 
                 </div>
             </form>
@@ -88,8 +88,12 @@
 <!--SCRIPT--------------------------------------------------------->
 <script>
 
+    import componenteMensagem from '../components/componenteMensagem.vue';
+
+    //Exporta os dados de ingredientes do banco de dados--------------------------------
     export default {
 
+        
         name:"burguerForm",
         
         data() {
@@ -102,13 +106,64 @@
                 pao: null,
                 carne: null,
                 opcionais: [],
-                status: "Solicitado",
                 msg: null,
-
+salvando: false
             }
         },
 
+
+        //Cria os métodos para alimentar o banco de dados com os pedidos--------------
         methods:{
+
+            async createBurguer(e){
+
+                this.salvando = true;
+                const data ={
+
+                    nome: this.nome,
+                    carne: this.carne,
+                    pao: this.pao,
+                    opcionais: Array.from(this.opcionais),
+                    status: "Solicitado",
+
+
+                }
+
+                const dataJson = JSON.stringify(data);
+
+                const req = await fetch("http://localhost:3000/burgers", {
+                    method: "POST",
+                    headers: {"Content-Type": "application/json"},
+                    body: dataJson
+                });
+
+                const res = await req.json();
+
+                    //rolar a tela para cima
+                    window.scrollTo({
+                    top: 600,
+                    left: 0,
+                    behavior: 'smooth'
+                    });
+
+
+                    //colocar msg de sistema
+                    this.msg = "PEDIDO ENVIADO COM SUCESSO!";
+
+
+                    //limpar mensagem
+                    setTimeout(() => this.msg = "", 3000);
+
+
+                    //limpar os campos
+                    this.nome = "";
+                    this.carne = "";
+                    this.pao = "";
+                    this.opcionais = "";
+
+                    this.salvando = false;
+
+            },
 
             async getIngredients(){
 
@@ -127,6 +182,11 @@
 
             this.getIngredients()
 
+        },
+
+        components:{
+
+            componenteMensagem,
         }
 
     }
@@ -244,8 +304,7 @@
         font-weight: bold;
         padding: 15px;
         border-radius: 30px;
-        background-color: 
-            #efa335;
+        background-color: #efa335;
         color: black;
         border: 0;
         transition: all ease-in-out 0.2s;
@@ -263,14 +322,21 @@
 
         .submit-btn:active{
 
-
+        
         background-color: #000000;
         color: white;
         transition: 0.3s;
         border-bottom: hidden;
     }
 
+    .submit-btn:disabled{
 
+        background-color: #000000;
+        color: gray;
+        transition: 0.6s;
+        border-bottom: hidden;
+
+    }
 
 
 

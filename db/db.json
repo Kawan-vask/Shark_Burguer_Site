@@ -1,4 +1,4 @@
-﻿{
+{
   "ingredientes": {
     "paes": [
       {
@@ -57,11 +57,10 @@
         "id": 5,
         "tipo": "Cebola roxa"
       },
-    
       {
         "id": 6,
         "tipo": "Picles"
-      },  
+      },
       {
         "id": 7,
         "tipo": "Maionese"
@@ -72,5 +71,75 @@
       }
     ]
   },
-  "status": []
+  "status": [
+    {
+      "id": 1,
+      "tipo": "Solicitado"
+    },
+    {
+      "id": 2,
+      "tipo": "Em produção"
+    },
+    {
+      "id": 3,
+      "tipo": "Finalizado"
+    }
+  ],
+  "burgers": [
+    {
+      "nome": "Hiago",
+      "carne": "Alcatra",
+      "pao": "3 Queijos",
+      "opcionais": [
+        "Bacon",
+        "Tomate",
+        "Cebola roxa"
+      ],
+      "status": "Finalizado",
+      "id": 1
+    },
+    {
+      "nome": "Hiago",
+      "carne": "Veggie burger",
+      "pao": "Italiano Branco",
+      "opcionais": [
+        "Tomate",
+        "Picles",
+        "Ketchup",
+        "Cebola roxa"
+      ],
+      "status": "Em produção",
+      "id": 2
+    },
+    {
+      "nome": "ademir",
+      "carne": "Picanha",
+      "pao": "Italiano Branco",
+      "opcionais": [
+        "Cheddar",
+        "Bacon",
+        "Tomate",
+        "Cebola roxa",
+        "Picles",
+        "Ketchup",
+        "Maionese"
+      ],
+      "status": "Em produção",
+      "id": 3
+    },
+    {
+      "nome": "Jeferson",
+      "carne": "Maminha",
+      "pao": "Italiano Branco",
+      "opcionais": [
+        "Bacon",
+        "Salame",
+        "Picles",
+        "Tomate",
+        "Cebola roxa"
+      ],
+      "status": "Solicitado",
+      "id": 4
+    }
+  ]
 }

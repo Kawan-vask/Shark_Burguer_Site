@@ -81,8 +81,8 @@
 
     .botoes {
         padding: 8px;
-        border-radius: 30px;
-        background-color: #000000;
+        border-radius: 10px;
+        background-color: transparent;
         color: #efa335;
         border: 1px #efa335 solid;
     }
@@ -91,6 +91,7 @@
             background-color: rgb(218, 87, 0);
             color: #000000;
             transition: 0.1s;
+            border:rgb(218, 87, 0);
      }
 
     #divisoria{

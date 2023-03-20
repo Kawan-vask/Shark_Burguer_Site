@@ -5,20 +5,15 @@
 
 <template><!--TEMPLATE---------------------------------------------->
     
-  <div>
-    
-    <Banner/>
+    <div>
 
+        <div class="SubmiteMessage-container">
 
+            <p>{{ msg }}</p>
 
-    <div class="Main-Container">
-    
-      <h1 class="titulo">MONTE SEU BURGUER:</h1>  
-      <burguer-form/>
+        </div>
 
     </div>
-
-  </div>
 
 </template>
 
@@ -30,21 +25,17 @@
 
 <!--SCRIPT--------------------------------------------------------->
 <script>
-  
-  import Banner from '../components/Banner.vue';
-  import BurguerForm from '../components/burguerForm.vue';
 
-  export default {
+    export default {
 
-    name:"Home",
-    components:{
+        name: "mensagem",
+        props:{
 
-      Banner,
-      BurguerForm,
+            msg: String,
+
+        }
+
     }
-
-  }
-
 </script>
 
 <!--=============================================================-->
@@ -56,6 +47,20 @@
 <!--STYLE---------------------------------------------------------->
 <style scoped>
 
+    .SubmiteMessage-container{
+
+        margin: 30px auto;
+        align-items: center;
+        background-color: rgb(54, 255, 54);
+        max-width: 400px;
+        padding: 30px;
+        border-radius: 20px;
+        color: rgb(15, 95, 15);
+        font-size: 15px;
+        font-weight: bold;
+        text-align: center;
+        
+    }
 
 </style>
 
